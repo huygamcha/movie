@@ -1,5 +1,4 @@
 // NavBar.js
-import React from "react";
 import clsx from "clsx";
 import styles from "./navbar.module.css";
 import {
