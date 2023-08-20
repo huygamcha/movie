@@ -1,3 +1,12 @@
 .wrapper{
-    background-color: #fff;
+    /* background-color: #fff; */
+    color: var(--text);
+}
+.content{
+    display: flex;
+}
+.img{
+    width: 300px;
+    height: 430px;
+    object-fit: contain;
 }

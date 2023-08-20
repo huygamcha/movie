@@ -6,9 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./GetMovies.module.css";
 import clsx from "clsx";
-import { FaPlayCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import Icon from "../Icon";
 
 export default function GetMovies({ url }: { url: string }) {
   // const { page } = usePage();
@@ -18,10 +18,9 @@ export default function GetMovies({ url }: { url: string }) {
   if (error) {
     console.log(error);
   }
-
   return (
     <>
-      {loading && <div>Loading...</div>}
+      {loading && <div className={clsx(styles.color)}>Loading...</div>}
       {data && (
         <div className={clsx("container", "mx-auto")}>
           <div className={clsx(styles.wrapper)}>
@@ -45,9 +44,7 @@ export default function GetMovies({ url }: { url: string }) {
                         <h3>{item.title}</h3>
                         <span className={clsx("flex", "justify-between")}>
                           <span>Action</span>
-                          <span className={clsx(styles.icon)}>
-                            <FaPlayCircle />
-                          </span>
+                          <Icon />
                         </span>
                       </div>
                       <img

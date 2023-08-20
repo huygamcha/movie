@@ -8,7 +8,7 @@
     /* width: calc(100% / 4 - 15 *3); */
 }
 .color{
-    color: #fff;
+    color: var(--text);
 }
 .title{
     width: 100%;
