@@ -6,12 +6,12 @@
 .header{
     font-size: 10px;    
 }
-li{
+.ul li{
     padding: 10px 0px;
     text-align: center;
     color: #b7b7b7;
 }
-li:hover{
+.li:hover{
     animation: fadein 1s linear forwards;
 }
 @keyframes fadein{

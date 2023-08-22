@@ -30,6 +30,9 @@ export default function GetMovies({ url }: { url: string }) {
               // pagination={{ clickable: false }}
               spaceBetween={15}
               slidesPerView={4}
+              slidesPerGroup={4}
+              grid={{ rows: 3 }}
+              // loop={true}
               onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
             >

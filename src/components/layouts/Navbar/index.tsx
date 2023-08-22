@@ -11,8 +11,8 @@ import {
 function NavBar() {
   return (
     <nav className={clsx(styles.navbar, styles.slide)}>
-      <ul>
-        <li>
+      <ul className={clsx(styles.ul)}>
+        <li className={clsx(styles.li)}>
           <a href="#">
             <div className={clsx(styles.icon)}>
               <AiFillHome />
@@ -20,7 +20,7 @@ function NavBar() {
             <span className={styles.header}> Home</span>
           </a>
         </li>
-        <li>
+        <li className={clsx(styles.li)}>
           <a href="#nowplaying">
             <div className={clsx(styles.icon)}>
               <AiFillPlaySquare />
@@ -28,7 +28,7 @@ function NavBar() {
             <span className={styles.header}> Now Playing</span>
           </a>
         </li>
-        <li>
+        <li className={clsx(styles.li)}>
           <a href="#popularfilm">
             <div className={clsx(styles.icon)}>
               <AiTwotoneFire />
@@ -36,7 +36,7 @@ function NavBar() {
             <span className={styles.header}>Popular</span>
           </a>
         </li>
-        <li>
+        <li className={clsx(styles.li)}>
           <a href="#toprate">
             <div className={clsx(styles.icon)}>
               <AiOutlineRise />
