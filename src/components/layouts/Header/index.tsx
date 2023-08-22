@@ -2,6 +2,7 @@ import clsx from "clsx";
 import styles from "./header.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import MainNavBar from "../MainNavbar";
 function Header() {
   return (
     <div className={clsx(styles.wrapper)}>
@@ -10,6 +11,9 @@ function Header() {
           {" "}
           MOVIE<span className={clsx(styles.title_sub)}>VENNIE</span>
         </Link>
+      </div>
+      <div>
+        <MainNavBar />
       </div>
       <div className={clsx(styles.searchavatar)}>
         <div className={clsx(styles.search)}>
