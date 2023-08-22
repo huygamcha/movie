@@ -1,11 +1,15 @@
 import clsx from "clsx";
 import styles from "./header.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className={clsx(styles.wrapper)}>
       <div>
-        MOVIE<span className={clsx(styles.title_sub)}>VENNIE</span>
+        <Link to="/">
+          {" "}
+          MOVIE<span className={clsx(styles.title_sub)}>VENNIE</span>
+        </Link>
       </div>
       <div className={clsx(styles.searchavatar)}>
         <div className={clsx(styles.search)}>

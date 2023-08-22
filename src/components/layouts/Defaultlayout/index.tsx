@@ -6,6 +6,7 @@ import Content from "../Content";
 // import Getdata from "../../Getdata/GetMovie";
 import GetMovie from "../../GetMovies";
 import Home from "../../Home";
+import { Link } from "react-router-dom";
 // import Pagination from "../../Pagination";
 
 function DefaultLayout() {
@@ -26,19 +27,25 @@ function DefaultLayout() {
               <Home />
               <section id="nowplaying">
                 <h4 className={clsx(styles.heading)}>
-                  <span> Now Playing</span>
+                  <span>
+                    <Link to="/nowplaying">Now Playing</Link>
+                  </span>
                 </h4>
                 <GetMovie url={"now_playing"} />
               </section>
               <section id="popularfilm">
                 <h4 className={clsx(styles.heading)}>
-                  <span> Popular Film</span>
+                  <span>
+                    <Link to="/popularfilm">Popular Film</Link>
+                  </span>
                 </h4>
                 <GetMovie url={"popular"} />
               </section>
               <section id="toprate">
                 <h4 className={clsx(styles.heading)}>
-                  <span> Top Rate</span>
+                  <span>
+                    <Link to="/toprate">Top Rate</Link>
+                  </span>
                 </h4>
                 <GetMovie url={"top_rated"} />
               </section>

@@ -120,9 +120,9 @@ const Detail = () => {
               {data.original_title} ({data.release_date.slice(0, 4)})
             </h2>
             <ul className={clsx(styles.space)}>
-              <li>Ngày phát hành: {data.release_date} </li>
+              <li>Date Release: {data.release_date} </li>
               <li className={clsx(styles.ul)}>
-                Thể loại:
+                Genres:
                 <ul className={clsx(styles.ul)}>
                   {data.genres.map((genre, i) => (
                     <li key={i}>
@@ -158,11 +158,11 @@ const Detail = () => {
                 </ul>
               </li>
               <li>
-                Thời lượng:
+                Run Time:
                 {` ${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m`}
               </li>
               <li>
-                Tổng quan:
+                Over View:
                 <br></br>
                 {data.overview}
               </li>

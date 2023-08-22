@@ -37,27 +37,29 @@ export default function GetMovies({ url }: { url: string }) {
               onSwiper={(swiper) => console.log(swiper)}
             >
               {data.map((item) => (
-                <SwiperSlide
-                  key={item.id}
-                  className={clsx(styles.color, styles.content)}
-                >
-                  <Link to={`/detail/${item.id}`}>
-                    <div className={clsx(styles.content_wrapper)}>
-                      <div className={clsx(styles.title)}>
-                        <h3>{item.title}</h3>
-                        <span className={clsx("flex", "justify-between")}>
-                          <span>Action</span>
-                          <Icon />
-                        </span>
+                <div>
+                  <SwiperSlide
+                    key={item.id}
+                    className={clsx(styles.color, styles.content)}
+                  >
+                    <Link to={`/detail/${item.id}`}>
+                      <div className={clsx(styles.content_wrapper)}>
+                        <div className={clsx(styles.title)}>
+                          <h3>{item.title}</h3>
+                          <span className={clsx("flex", "justify-between")}>
+                            <span>Action</span>
+                            <Icon />
+                          </span>
+                        </div>
+                        <img
+                          className={clsx(styles.img)}
+                          src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
+                          alt={item.title}
+                        />
                       </div>
-                      <img
-                        className={clsx(styles.img)}
-                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.poster_path}`}
-                        alt={item.title}
-                      />
-                    </div>
-                  </Link>
-                </SwiperSlide>
+                    </Link>
+                  </SwiperSlide>
+                </div>
               ))}
             </Swiper>
           </div>
@@ -67,8 +69,8 @@ export default function GetMovies({ url }: { url: string }) {
         <button onClick={() => setPage(page <= 1 ? 1 : page - 1)}>
           PrePage
         </button>
-        <button className={clsx(styles.btn_text)}>{page}/20</button>
-        <button onClick={() => setPage(page >= 20 ? 20 : page + 1)}>
+        <button className={clsx(styles.btn_text)}>{page}/79</button>
+        <button onClick={() => setPage(page >= 79 ? 79 : page + 1)}>
           NextPage
         </button>
       </div>

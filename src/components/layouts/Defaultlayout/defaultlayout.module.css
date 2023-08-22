@@ -35,3 +35,21 @@
 .heading span{
     padding-left: 20px;
 }
+.heading span:hover{
+    animation: Fadeout 0.5s linear forwards;
+    cursor: pointer;
+    color: var(--primary);
+    padding: 20px;
+}
+@keyframes Fadeout{
+    0%{
+        transform: translate(1%, -1%);
+    }
+    50%{
+        transform: translate(2%, -2%);
+    }
+    100%{
+        transform: translate(3%, -3%);
+
+    }
+}
