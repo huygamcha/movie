@@ -3,7 +3,15 @@ import styles from "./header.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import MainNavBar from "../MainNavbar";
+import useSearch from "../../../hooks/useSearch";
+import { useState } from "react";
 function Header() {
+  const { onchange } = useSearch();
+  // câu lệnh dùng để lưu giá trị search vào
+  const [data, setData] = useState<string>("");
+  const handleSearch = () => {
+    onchange(data);
+  };
   return (
     <div className={clsx(styles.wrapper)}>
       <div>
@@ -17,9 +25,16 @@ function Header() {
       </div>
       <div className={clsx(styles.searchavatar)}>
         <div className={clsx(styles.search)}>
-          <input placeholder="Search Movie" type="text" />
+          <input
+            value={data}
+            onChange={(e) => setData(e.target.value)}
+            placeholder="Search Movie"
+            type="text"
+          />
           <div className={clsx(styles.search_icon)}>
-            <AiOutlineSearch />
+            <Link to={"/search"} onClick={handleSearch}>
+              <AiOutlineSearch />
+            </Link>
           </div>
         </div>
         <div>

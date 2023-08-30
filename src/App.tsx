@@ -6,6 +6,7 @@ import Detail from "./components/Detail";
 import Nowplaying from "./pages/Nowplaying";
 import TopRate from "./pages/TopRate";
 import PopularFilm from "./pages/PopularFilm";
+import SearchFilm from "./components/Search";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/nowplaying" element={<Nowplaying />} />
           <Route path="/toprate" element={<TopRate />} />
           <Route path="/popularfilm" element={<PopularFilm />} />
+          <Route path="/search" element={<SearchFilm />} />
         </Routes>
       </Router>
     </GlobalStyles>
