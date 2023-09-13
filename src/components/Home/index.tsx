@@ -6,7 +6,7 @@ function Home() {
     <div className={clsx(styles.wrapper)}>
       <img
         className={clsx(styles.wrapper)}
-        src="https://movie-site-delta.vercel.app/img/home-background.png"
+        src="public/background.jpeg"
         alt=""
       />
       <div className={styles.infor}>

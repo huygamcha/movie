@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
 interface Data {
-  page: string;
-  onchange: (newPage: string) => void;
+  value_movie: string;
+  onchange: (newMovie: string) => void;
 }
 
 const useSearch = create<Data>((set) => ({
-  page: "",
-  onchange: (newPage) => set({ page: newPage }),
+  value_movie: "",
+  onchange: (newMovie) => set({ value_movie: newMovie }),
 }));
 export default useSearch;

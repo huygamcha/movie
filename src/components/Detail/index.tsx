@@ -64,14 +64,27 @@ interface Cast {
   character: string;
   id: number;
 }
+
 interface Character {
   id: number;
   cast: Cast[];
 }
 
+interface VideoTrailer {
+  key: string;
+  name: string;
+  id: number;
+}
+
+interface Trailer {
+  id: number;
+  results: VideoTrailer[];
+}
+
 const Detail = () => {
   const [data, setData] = useState<dataType>();
   const [character, setCharacter] = useState<Character>();
+  const [trailer, setTrailer] = useState<Trailer>();
   const { id } = useParams(); // Lấy tham số "id" từ đường dẫn
   useEffect(() => {
     axios
@@ -83,6 +96,20 @@ const Detail = () => {
       })
       .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYmY0YWJjNGUzMTEyYzNhOGIyODMwMWMxYWQwMzllZSIsInN1YiI6IjY0MTI3N2Q2ZTE4ZTNmMDdkMDU1ZjY4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iw5OvKuR35yRllO8eoRWjvCQnlFmh8nieiLD9NpSDc8",
+        },
+      })
+      .then((response) => {
+        setTrailer(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -102,7 +129,9 @@ const Detail = () => {
         console.log(error);
       });
   }, [id]);
-
+  trailer?.results.map((item) => {
+    console.log(item.key);
+  });
   return (
     <div className={clsx(styles.wrapper, "container", "mx-auto")}>
       {data && (
@@ -113,6 +142,7 @@ const Detail = () => {
               src={`https://www.themoviedb.org/t/p/w220_and_h330_face${data.poster_path}`}
               alt=""
             />
+            <div className={clsx(styles.content_img_trailer)}>Trailer</div>
           </div>
 
           <div className={clsx(styles.content_text)}>
@@ -166,8 +196,31 @@ const Detail = () => {
                 <br></br>
                 {data.overview}
               </li>
+              <li></li>
             </ul>
           </div>
+        </div>
+      )}
+      {trailer && (
+        <div>
+          <h4> Trailers:</h4>
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar]}
+            navigation
+            // scrollbar={{ draggable: true, dragSize: 100 }}
+            spaceBetween={15}
+            slidesPerView={2}
+          >
+            {trailer.results.map((item) => (
+              <SwiperSlide key={item.id}>
+                <iframe
+                  className={clsx(styles.video_trailer)}
+                  src={`https://www.youtube.com/embed/${item.key}`}
+                  allowFullScreen
+                ></iframe>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       )}
       {character && (

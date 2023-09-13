@@ -52,6 +52,7 @@ function DefaultLayout() {
             </Content>
           </div>
         </div>
+
         <div>{/* <Pagination /> */}</div>
       </div>
     </div>

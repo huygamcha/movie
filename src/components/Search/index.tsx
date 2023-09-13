@@ -31,11 +31,11 @@ interface Data {
 
 function SearchFilm() {
   const [data, setData] = useState<Data>();
-  const { page } = useSearch();
+  const { value_movie } = useSearch();
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?query=${page}&include_adult=false&language=en-US`,
+        `https://api.themoviedb.org/3/search/movie?query=${value_movie}&include_adult=false&language=en-US`,
         {
           headers: {
             Authorization:
@@ -49,16 +49,16 @@ function SearchFilm() {
       .catch((error) => {
         console.log(error);
       });
-  }, [page]);
+  }, [value_movie]);
   console.log("««««« data »»»»»", data);
   //   console.log("««««« okbro »»»»»");
   return (
     <>
-      <div className={clsx("container", "mx-auto")}>
+      <div className={clsx("container", "mx-auto", styles.wrapper)}>
         <Header />
         <Home />
         {data && (
-          <div className={clsx("grid-cols-4", "grid", styles.img, "gap-5")}>
+          <div className={clsx("grid-cols-4", "grid", "gap-5", styles.content)}>
             {data.results.map((item, i) => (
               <div key={i}>
                 <Link to={`/detail/${item.id}`}>
