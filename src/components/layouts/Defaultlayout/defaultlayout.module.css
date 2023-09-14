@@ -1,10 +1,4 @@
-.header{
-    position: fixed;
-    top: 0;
-    background-color: var(--background);
-    z-index: 99;
-    padding: 0 60px;
-}
+
 .wrapper{
     padding: 0 60px;
 

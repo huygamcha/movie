@@ -1,6 +1,4 @@
-.headerComponent{
-    position: fixed;
-}
+
 .wrapper{
     padding: 0 60px;
     color: var(--text);
