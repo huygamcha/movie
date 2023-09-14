@@ -6,6 +6,7 @@
     color: #fff;
     font-size: 24px;
     justify-content: space-between;
+    box-shadow: rgba(159, 155, 155, 0.2) 0px 8px 50px -10px;
 }
 .title_sub{
     color: var(--primary);

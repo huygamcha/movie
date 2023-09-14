@@ -5,9 +5,8 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 import Icon from "../Icon";
 import useSearch from "../../hooks/useSearch";
-import Header from "../layouts/Header";
-import Home from "../Home";
 import NoResults from "../NoResults";
+import Top from "../layouts/Top";
 interface Genres {
   id: number;
   name: string;
@@ -55,9 +54,10 @@ function SearchFilm() {
   //   console.log("««««« okbro »»»»»");
   return (
     <>
+      <div>
+        <Top />
+      </div>
       <div className={clsx("container", "mx-auto", styles.wrapper)}>
-        <Header />
-        <Home />
         <h4 className={clsx(styles.heading)}>
           <span>Results</span>
         </h4>
