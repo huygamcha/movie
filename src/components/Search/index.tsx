@@ -7,6 +7,7 @@ import Icon from "../Icon";
 import useSearch from "../../hooks/useSearch";
 import Header from "../layouts/Header";
 import Home from "../Home";
+import NoResults from "../NoResults";
 interface Genres {
   id: number;
   name: string;
@@ -57,6 +58,18 @@ function SearchFilm() {
       <div className={clsx("container", "mx-auto", styles.wrapper)}>
         <Header />
         <Home />
+        <h4 className={clsx(styles.heading)}>
+          <span>Results</span>
+        </h4>
+        {data?.results.length === 0 ? (
+          <div className={clsx(styles.no_results)}>
+            {" "}
+            <NoResults />{" "}
+          </div>
+        ) : (
+          ""
+        )}
+
         {data && (
           <div className={clsx("grid-cols-4", "grid", "gap-5", styles.content)}>
             {data.results.map((item, i) => (

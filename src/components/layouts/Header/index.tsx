@@ -26,12 +26,14 @@ function Header() {
       </div>
       <div className={clsx(styles.searchavatar)}>
         <div className={clsx(styles.search)}>
-          <input
-            value={value_movie ? value_movie : value_movie}
-            onChange={(e) => onchange(e.target.value)}
-            placeholder="Search Movie"
-            type="text"
-          />
+          <Link to={"/search"}>
+            <input
+              value={value_movie}
+              onChange={(e) => onchange(e.target.value)}
+              placeholder="Search Movie"
+              type="text"
+            />
+          </Link>
           <div className={clsx(styles.search_icon)}>
             <Link to={"/search"} onClick={handleSearch}>
               <AiOutlineSearch />

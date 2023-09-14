@@ -16,15 +16,15 @@
 }
 @keyframes fadein{
     0%{
-        color: #ccc;
+        color: #efac3f;
         scale: 1.02;
     }
     50%{
-        color: #f5f1f1;
+        color: #f1a832;
         scale: 1.05;
     }
     100%{
-        color: #f5f5f5;
+        color:#ffb43a;
         scale: 1.08;
     }
 }

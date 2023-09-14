@@ -41,6 +41,8 @@ import {
   AiFillStar,
 } from "react-icons/ai";
 import Icon from "../Icon";
+import Header from "../layouts/Header";
+
 interface Genres {
   id: number;
   name: string;
@@ -134,6 +136,7 @@ const Detail = () => {
   });
   return (
     <div className={clsx(styles.wrapper, "container", "mx-auto")}>
+      <Header />
       {data && (
         <div className={clsx(styles.content)}>
           <div className={clsx(styles.content_img)}>
