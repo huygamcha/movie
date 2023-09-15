@@ -41,7 +41,7 @@ function Header() {
           </div>
         </div>
         <div>
-          <img className={clsx(styles.img)} src="public/avatar.jpeg" alt="" />
+          <img className={clsx(styles.img)} src="/public/avatar.jpeg" alt="" />
         </div>
       </div>
     </div>

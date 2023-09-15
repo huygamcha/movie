@@ -1,28 +1,3 @@
-// import clsx from "clsx";
-// import styles from "./Detail.module.css";
-// import { useParams } from "react-router-dom";
-// import useFetch from "../../hooks/useGetMovies";
-
-// function Detail() {
-//   const { id } = useParams(); // Lấy tham số "id" từ đường dẫn
-//   let value = "";
-//   if (typeof id == "string") {
-//     value = id;
-//   }
-//   const { data, loading, error } = useFetch(value);
-//   if (error) {
-//     console.log(error);
-//   }
-//   return (
-//     <div className={clsx(styles.wrapper)}>
-//       <div>{loading && <div>Loading... </div>}</div>
-//       <div>{data && data.map((item) => <div>{item.id}</div>)}</div>
-//     </div>
-//   );
-// }
-
-// export default Detail;
-// phía trên lỗi ko lấy được data
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -41,7 +16,7 @@ import {
   AiFillStar,
 } from "react-icons/ai";
 import Icon from "../Icon";
-import Header from "../layouts/Header";
+import Top from "../layouts/Top";
 
 interface Genres {
   id: number;
@@ -135,129 +110,133 @@ const Detail = () => {
     console.log(item.key);
   });
   return (
-    <div className={clsx(styles.wrapper, "container", "mx-auto")}>
-      <Header />
-      {data && (
-        <div className={clsx(styles.content)}>
-          <div className={clsx(styles.content_img)}>
-            <img
-              className={clsx(styles.img)}
-              src={`https://www.themoviedb.org/t/p/w220_and_h330_face${data.poster_path}`}
-              alt=""
-            />
-            <div className={clsx(styles.content_img_trailer)}>Trailer</div>
-          </div>
+    <div>
+      <div>
+        <Top />
+      </div>
+      <div className={clsx(styles.wrapper, "container", "mx-auto")}>
+        {data && (
+          <div className={clsx(styles.content)}>
+            <div className={clsx(styles.content_img)}>
+              <img
+                className={clsx(styles.img)}
+                src={`https://www.themoviedb.org/t/p/w220_and_h330_face${data.poster_path}`}
+                alt=""
+              />
+              <div className={clsx(styles.content_img_trailer)}>Trailer</div>
+            </div>
 
-          <div className={clsx(styles.content_text)}>
-            <h2>
-              {data.original_title} ({data.release_date.slice(0, 4)})
-            </h2>
-            <ul className={clsx(styles.space)}>
-              <li>Date Release: {data.release_date} </li>
-              <li className={clsx(styles.ul)}>
-                Genres:
-                <ul className={clsx(styles.ul)}>
-                  {data.genres.map((genre, i) => (
-                    <li key={i}>
-                      {i < data.genres.length - 1
-                        ? `${genre.name},`
-                        : `${genre.name}`}
+            <div className={clsx(styles.content_text)}>
+              <h2>
+                {data.original_title} ({data.release_date.slice(0, 4)})
+              </h2>
+              <ul className={clsx(styles.space)}>
+                <li>Date Release: {data.release_date} </li>
+                <li className={clsx(styles.ul)}>
+                  Genres:
+                  <ul className={clsx(styles.ul)}>
+                    {data.genres.map((genre, i) => (
+                      <li key={i}>
+                        {i < data.genres.length - 1
+                          ? `${genre.name},`
+                          : `${genre.name}`}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li>
+                  <ul className={clsx(styles.ul, styles.action)}>
+                    <li className={clsx("flex", "items-center")}>
+                      <CircleMark degree={data.vote_average} />
+                      <span className={clsx("pl-1")}>User Score</span>
                     </li>
-                  ))}
-                </ul>
-              </li>
-              <li>
-                <ul className={clsx(styles.ul, styles.action)}>
-                  <li className={clsx("flex", "items-center")}>
-                    <CircleMark degree={data.vote_average} />
-                    <span className={clsx("pl-1")}>User Score</span>
-                  </li>
-                  <li>
-                    <AiOutlineUnorderedList />{" "}
-                  </li>
-                  <li>
-                    <AiFillHeart />
-                  </li>
-                  <li>
-                    <AiTwotoneAppstore />
-                  </li>
-                  <li>
-                    <AiFillStar />
-                  </li>
-                  <li className={clsx("flex", "items-center")}>
-                    <Icon />
-                    <span className={clsx("pl-1")}> Play now</span>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                Run Time:
-                {` ${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m`}
-              </li>
-              <li>
-                Over View:
-                <br></br>
-                {data.overview}
-              </li>
-              <li></li>
-            </ul>
+                    <li>
+                      <AiOutlineUnorderedList />{" "}
+                    </li>
+                    <li>
+                      <AiFillHeart />
+                    </li>
+                    <li>
+                      <AiTwotoneAppstore />
+                    </li>
+                    <li>
+                      <AiFillStar />
+                    </li>
+                    <li className={clsx("flex", "items-center")}>
+                      <Icon />
+                      <span className={clsx("pl-1")}> Play now</span>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Run Time:
+                  {` ${Math.floor(data.runtime / 60)}h ${data.runtime % 60}m`}
+                </li>
+                <li>
+                  Over View:
+                  <br></br>
+                  {data.overview}
+                </li>
+                <li></li>
+              </ul>
+            </div>
           </div>
-        </div>
-      )}
-      {trailer && (
-        <div>
-          <h4> Trailers:</h4>
-          <Swiper
-            modules={[Navigation, Pagination, Scrollbar]}
-            navigation
-            // scrollbar={{ draggable: true, dragSize: 100 }}
-            spaceBetween={15}
-            slidesPerView={2}
-          >
-            {trailer.results.map((item) => (
-              <SwiperSlide key={item.id}>
-                <iframe
-                  className={clsx(styles.video_trailer)}
-                  src={`https://www.youtube.com/embed/${item.key}`}
-                  allowFullScreen
-                ></iframe>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-      )}
-      {character && (
-        <div>
-          <h4> Top Billed Cast:</h4>
+        )}
+        {trailer && (
           <div>
+            <h4> Trailers:</h4>
             <Swiper
               modules={[Navigation, Pagination, Scrollbar]}
               navigation
               // scrollbar={{ draggable: true, dragSize: 100 }}
               spaceBetween={15}
-              slidesPerView={7}
+              slidesPerView={2}
             >
-              {character.cast.map((item) => (
+              {trailer.results.map((item) => (
                 <SwiperSlide key={item.id}>
-                  <div className={clsx(styles.character_info)}>
-                    <img
-                      className={clsx(styles.img_character)}
-                      src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.profile_path}`}
-                      alt={item.profile_path}
-                    />
-                    <div className={clsx(styles.character_actor)}>
-                      {item.character}
-                    </div>
-                    <div className={clsx(styles.character_name_origin)}>
-                      {item.original_name}
-                    </div>
-                  </div>
+                  <iframe
+                    className={clsx(styles.video_trailer)}
+                    src={`https://www.youtube.com/embed/${item.key}`}
+                    allowFullScreen
+                  ></iframe>
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-        </div>
-      )}
+        )}
+        {character && (
+          <div>
+            <h4> Top Billed Cast:</h4>
+            <div>
+              <Swiper
+                modules={[Navigation, Pagination, Scrollbar]}
+                navigation
+                // scrollbar={{ draggable: true, dragSize: 100 }}
+                spaceBetween={15}
+                slidesPerView={7}
+              >
+                {character.cast.map((item) => (
+                  <SwiperSlide key={item.id}>
+                    <div className={clsx(styles.character_info)}>
+                      <img
+                        className={clsx(styles.img_character)}
+                        src={`https://www.themoviedb.org/t/p/w220_and_h330_face${item.profile_path}`}
+                        alt={item.profile_path}
+                      />
+                      <div className={clsx(styles.character_actor)}>
+                        {item.character}
+                      </div>
+                      <div className={clsx(styles.character_name_origin)}>
+                        {item.original_name}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

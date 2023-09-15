@@ -1,7 +1,6 @@
 .wrapper{
     /* background-color: #fff; */
     color: var(--text);
-    margin-top: 40px;
 }
 .content{
     display: flex;
@@ -97,4 +96,7 @@
     height: 300px;
     border-radius: 10px;
     margin-top: 10px;
+}
+.headerComponent{
+    
 }
