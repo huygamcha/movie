@@ -62,6 +62,7 @@ const Detail = () => {
   const [data, setData] = useState<dataType>();
   const [character, setCharacter] = useState<Character>();
   const [trailer, setTrailer] = useState<Trailer>();
+  const [loved, setLoved] = useState<boolean>(true);
   const { id } = useParams(); // Lấy tham số "id" từ đường dẫn
   useEffect(() => {
     axios
@@ -75,7 +76,7 @@ const Detail = () => {
         setData(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("error", error);
       });
 
     axios
@@ -106,9 +107,10 @@ const Detail = () => {
         console.log(error);
       });
   }, [id]);
-  trailer?.results.map((item) => {
-    console.log(item.key);
-  });
+  // trailer?.results.map((item) => {
+  //   console.log(item.key);
+  // });
+  console.log("««««« loved »»»»»", loved);
   return (
     <div>
       <div>
@@ -154,7 +156,13 @@ const Detail = () => {
                       <AiOutlineUnorderedList />{" "}
                     </li>
                     <li>
-                      <AiFillHeart />
+                      <div onClick={() => setLoved(!loved)}>
+                        <AiFillHeart
+                          style={
+                            loved ? { fill: "" } : { fill: "var(--primary)" }
+                          }
+                        />
+                      </div>
                     </li>
                     <li>
                       <AiTwotoneAppstore />
