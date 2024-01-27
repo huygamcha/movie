@@ -51,7 +51,6 @@ function SearchFilm() {
       });
   }, [value_movie]);
   console.log("««««« data »»»»»", data);
-  //   console.log("««««« okbro »»»»»");
   return (
     <>
       <div>

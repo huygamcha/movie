@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./Detail.module.css";
 import clsx from "clsx";
-import CircleMark from "../CircleMark";
+import CircleMark from "../../components/CircleMark";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper/modules";
 import "swiper/css";
@@ -15,8 +15,8 @@ import {
   AiTwotoneAppstore,
   AiFillStar,
 } from "react-icons/ai";
-import Icon from "../Icon";
-import Top from "../layouts/Top";
+import Icon from "../../components/Icon";
+import Top from "../../components/layouts/Top";
 
 interface Genres {
   id: number;

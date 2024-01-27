@@ -18,7 +18,7 @@ export default function useFetch(url: string, page: string): FetchResult {
   const [data, setData] = useState<Data[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-
+  console.log("««««« setError »»»»»", setError);
   useEffect(() => {
     (async function () {
       try {
